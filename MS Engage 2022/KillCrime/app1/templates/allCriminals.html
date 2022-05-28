@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block title %}All Criminals{% endblock title %}
+
+{% block css %}
+<style>
+.wantedBy span {
+    display: inline-block;
+    width: 50px;
+    height: 1px;
+    background-color: #ffc107;
+    margin-right: 15px;
+  }
+
+  .wantedBy {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-bottom: 21px;
+    margin-top: 90px;
+    margin-left: 21%;
+
+  }
+
+  .wantedBy h3 {
+    color: #ffc107;
+    font-weight: lighter;
+  }
+
+  .item {
+    width: 15rem;
+    padding: 0 15px;
+    margin-bottom: 15px;
+    float: left;
+  }
+
+  .wantedImg {
+    overflow: hidden;
+    margin: auto 0;
+    padding: auto 0;
+  }
+
+  .item img {
+    height: 282px;
+    width: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    border-radius: 30px;
+
+    transition: transform 0.3s ease-in;
+  }
+
+  .item img:hover {
+    transform: scale(1.1);
+  }
+
+  .item h5 {
+    font-size: 16px;
+    margin: 15px 0 0px;
+    font-weight: 600;
+    color: #fff;
+    height: 50px;
+    text-transform: capitalize;
+    text-align: center;
+  }
+
+  .wantedByIndia {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-left: 20%;
+    margin-right: 10%;
+    width: 60%;
+    place-items: center;
+    /* border: 2px red solid; */
+  }
+
+  .item a h5 {
+    color: #ffc107;
+    text-decoration: none;
+  }
+  .item a h5:hover{
+    text-decoration: underline;
+  }
+</style>
+{% endblock css %}
+
+{% block body %}
+
+<div class="wantedBy">
+  <span></span>
+  <h3>All Criminals</h3>
+</div>
+
+<div class="wantedByIndia">
+  {% for criminal in criminals %}
+
+  <div class="item text-center">
+
+    <a href="/viewCriminal/{{criminal.crim_id}}">
+      <div class="wantedImg">
+        <img src="/media/{{criminal.image}}" alt="{{criminal.name}}" class="image-responsive">
+      </div>
+      <h5>{{criminal.name}}</h5>
+    </a> 
+  </div> 
+  {% endfor %}
+
+</div>
+
+  {% endblock body %}

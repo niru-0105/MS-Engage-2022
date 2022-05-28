@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block title %}{{criminal.name}}{% endblock title %}
+
+{% block css %}
+<style>
+    .viewCriminalDiv {
+        width: 50%;
+        margin: auto;
+        margin-top: 120px;
+        margin-bottom: 200px;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        /* border: 2px red solid; */
+        background-color: #202020;
+        color: #696969;
+    }
+
+    .name {
+        padding: 20px 20px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        /* border: 2px yellow solid; */
+    }
+
+    .name div img {
+        width: 70%;
+        height: auto;
+        border-radius: 10px;
+        margin-left: 5rem;
+    }
+
+    .name div:nth-of-type(2) {
+        /* border: 2px cyan solid; */
+        margin-left: 63px;
+    }
+
+    .name h4,
+    .name p {
+        margin-left: 15px;
+
+    }
+
+    .name p span {
+        font-size: 16px;
+        color: white;
+
+    }
+
+    .name h4 {
+        color: #ffc107;
+    }
+
+    .charges {
+        padding: 20px 30px;
+    }
+
+    .charges h3 {
+        color: white;
+    }
+
+    .charges p {
+        margin-left: 25px;
+    }
+
+    .charges .container {
+        margin: 50px 20px 30px 10px;
+    }
+</style>
+
+{% endblock css %}
+
+{% block body %}
+
+<div>
+    <div class=" viewCriminalDiv">
+        <div class="name">
+            <div>
+                <h4>{{criminal.name}}</h4>
+                <p><span>Wanted By:</span> {{criminal.wantedInCountry}}</p>
+                <p><span>Age(Date of Birth):</span> {{criminal.age}} years</p>
+                <p><span>Gender:</span> {{criminal.gender}}</p>
+                <p><span>Nationality:</span> {{criminal.nationality}}</p>
+                <p><span>Height:</span> {{criminal.height}}</p>
+                <p><span>Weight:</span> {{criminal.weight}}</p>
+            </div>
+            <div>
+                <img src="/media/{{criminal.image}}" alt="">
+            </div>
+        </div>
+        <div class="charges">
+            <h3>Charges</h3>
+            <p>{{criminal.charges}}</p>
+
+            <h3>About</h3>
+            <p>{{criminal.about}}</p>
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                            <a href="/edit/{{criminal.crim_id}}"><button style="padding-left: 3.75rem;padding-right: 4.75rem;border-left-width: 2px;" class="btn btn-outline-warning submit" type="link">Edit</button></a>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <form action="/deleteCriminal/{{criminal.crim_id}}" method="post"> {% csrf_token %}
+                            <div class="d-grid gap-2 col-6 mx-auto">
+                                <button class="btn btn-warning submit" type="submit">Delete</button>
+                            </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    {% endblock body %}

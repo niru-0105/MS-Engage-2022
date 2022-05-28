@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% block css %}
+<style>
+    form div .form-control {
+        background-color: #202020;
+        border: none;
+        width: 100%;
+        border: 1px rgb(235, 232, 217) solid;
+        border-radius: 10px;
+        color: #fbfbfb;
+        font-size: 14px;
+    }
+
+    label {
+        font-size: 12px;
+    }
+
+    form .mb-3 {
+        margin-top: 25px;
+
+    }
+
+    .logindiv {
+        width: 50%;
+        /* margin-top: 10%; */
+        /* border: 2px red solid; */
+        padding: 20px 30px;
+        margin-top: 80px;
+        margin-bottom: 80px;
+        background-color: #202020;
+    }
+
+    .logindiv h2 {
+        color: whitesmoke;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        margin-left: 35%;
+        padding-top: 30px;
+        font-weight: lighter;
+    }
+
+    .form-control:active,
+    .form-control:focus,
+    .form-control:focus:active {
+        background-color: #202020 !important;
+        border: none;
+        color: white;
+    }
+
+    .submit {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+</style>
+{% endblock css %}
+
+{% block body %}
+
+<div class="container logindiv">
+    <h2>Edit Criminal</h2>
+    <form method='post' action="/edit/{{criminal.crim_id}}"> {% csrf_token %}
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" placeholder="Enter Name" name="name" value="{{criminal.name}}" class="form-control" id="name" required>
+        </div>
+        <div class="mb-3">
+            <label for="age" class="form-label">Age or Date of Birth</label>
+            <input type="text" value="{{criminal.age}}" class="form-control" placeholder="Enter Age or Date of Birth" name="age" id="age"
+                required>
+        </div>
+        <div class="mb-3">
+            <label for="nationality" class="form-label">Nationality</label>
+            <input type="text" value="{{criminal.nationality}}" class="form-control" value="Not known" placeholder="Enter nationality" name="nationality"
+                id="nationality">
+        </div>
+        <div class="mb-3">
+
+            <label for="gender" class="form-label">Gender</label>
+            <input type="text" value="{{criminal.gender}}" class="form-control" name="gender" id="gender" placeholder="Enter Gender">
+        </div>
+        <div class="mb-3">
+
+            <label for="weight" class="form-label">Weight</label>
+            <input type="text" value="{{criminal.weight}}" class="form-control" placeholder="Enter Weight" name="weight" id="weight">
+        </div>
+        <div class="mb-3">
+
+            <label for="height" class="form-label">Height</label>
+            <input type="text" value="{{criminal.height}}" class="form-control" placeholder="Enter Height" name="height" id="height">
+        </div>
+        <div class="mb-3">
+
+            <label for="wantedBy" class="form-label">Wanted BY</label>
+            <input type="text" value="{{criminal.wantedInCountry}}" class="form-control" placeholder="Wanted BY" name="wantedBy" id="wantedBy">
+        </div>
+        <div class="mb-3">
+
+            <label for="charges" class="form-label">Charges</label>
+            <textarea name="charges"  class="form-control"  id="charges" rows="3">{{criminal.charges}}</textarea>
+        </div>
+        <div class="mb-3">
+
+            <label for="about" class="form-label">About</label>
+            <textarea name="about" class="form-control"  id="about" rows="3">{{criminal.about}}</textarea>
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-warning submit" type="submit">Save</button>
+      
+          </div>
+    </form>
+
+</div>
+{% endblock body %}

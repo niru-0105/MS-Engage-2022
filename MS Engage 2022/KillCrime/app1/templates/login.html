@@ -1,0 +1,57 @@
+{% extends 'base2.html' %}
+
+{% block title %}Log In{% endblock title %}
+
+{% block css %}
+<style>
+  .logindiv{
+    margin-top: 5%;
+  }
+  .loginSignUp {
+    width:24%;
+    border-radius:10px;
+    text-align: center;
+    /* border: 1px red solid; */
+    padding-top: 25px;
+    margin-top: 50px;    
+    background-color: #202020;
+    padding-bottom: 20px;
+    
+    color: #fbfbfb;
+  }
+  .loginSignUp p a{
+    color: #ffc107;
+    text-decoration: none;
+  }
+  .loginSignUp p a:hover{
+    text-decoration: underline;
+  }
+
+
+</style>
+{% endblock css %}
+{% block body %}
+{% load static %}
+<div class="container logindiv">
+  <img src='{%static "app1/images/logo2.png" %}' style="margin-left: 24%;" alt="KillCrime">
+  <form class="ml-4" action="/login/" method='post'> {% csrf_token %}
+    <div class="mb-3">
+      <input type="text" name="username" placeholder="Enter Username" class="form-control" id="username">
+    </div>
+    <div class="mb-3">
+      <input type="password" name="password" placeholder="Enter Password" class="form-control" id="password">
+    </div>
+    <div class="d-grid gap-2 col-6 mx-auto">
+      <button class="btn btn-warning submit" type="submit">Log In</button>
+
+    </div>
+  </form>
+
+</div>
+
+<div class="container loginSignUp">
+  <p>Do not have an account? <a href="/signup">Log In</a>
+</div>
+
+
+{% endblock body %}

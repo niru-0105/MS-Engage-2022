@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock title %}
+
+{% block css %}
+<style>
+  .carousel,
+  .carousel-inner {
+    width: 97%;
+    height: 600px;
+  }
+
+  .carousel {
+    margin-top: 30px;
+    position: relative;
+    margin-left: 37px;
+  }
+
+  .carousel-control-prev-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffc107' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+
+  }
+
+  .carousel-control-next-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffc107' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+  }
+
+  .carousel-control-next {
+    right: -113px;
+  }
+
+  .carousel-control-prev {
+    left: -169px;
+  }
+
+  .wantedBy span {
+    display: inline-block;
+    width: 50px;
+    height: 1px;
+    background-color: #ffc107;
+    margin-right: 15px;
+  }
+
+  .wantedBy {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-bottom: 21px;
+    margin-top: 90px;
+    margin-left: 21%;
+
+  }
+
+  .wantedBy h3 {
+    color: #ffc107;
+    font-weight: lighter;
+  }
+
+  .item {
+    width: 15rem;
+    padding: 0 15px;
+    margin-bottom: 15px;
+    float: left;
+  }
+
+  .wantedImg {
+    overflow: hidden;
+    margin: auto 0;
+    padding: auto 0;
+  }
+
+  .item img {
+    height: 282px;
+    width: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    border-radius: 30px;
+
+    transition: transform 0.3s ease-in;
+  }
+
+  .item img:hover {
+    transform: scale(1.1);
+  }
+
+  .item h5 {
+    font-size: 16px;
+    margin: 15px 0 0px;
+    font-weight: 600;
+    color: #fff;
+    height: 50px;
+    text-transform: capitalize;
+    text-align: center;
+  }
+
+  .wantedByIndia {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-left: 20%;
+    margin-right: 10%;
+    width: 60%;
+    place-items: center;
+  }
+
+  .item a h5 {
+    color: #ffc107;
+    text-decoration: none;
+  }
+  .item a h5:hover{
+    text-decoration: underline;
+  }
+</style>
+{% endblock %}
+
+{% block body %}
+{% load static %}
+<div class="container">
+
+  <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src='{%static "app1/images/1.jpg" %}' style="border-radius: 20px;" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src='{%static "app1/images/2.webp" %}' style="border-radius: 20px;" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src='{%static "app1/images/3.jpg" %}' style="border-radius: 20px;" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src='{%static "app1/images/4.jpeg" %}' style="border-radius: 20px;" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src='{%static "app1/images/5.jpeg" %}' style="border-radius: 20px;" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src='{%static "app1/images/6.jpeg" %}' style="border-radius: 20px;" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+</div>
+<div class="wantedBy">
+  <span></span>
+  <h3>Most Wanted By India</h3>
+</div>
+
+<div class="wantedByIndia">
+  {% for criminal in wantedByIndia %}
+
+  <div class="item text-center">
+
+    <a href="viewCriminal/{{criminal.crim_id}}">
+      <div class="wantedImg">
+        <img src="/media/{{criminal.image}}" alt="{{criminal.name}}" class="image-responsive">
+      </div>
+      <h5>{{criminal.name}}</h5>
+    </a>
+  </div>
+
+  {% endfor %}
+
+
+</div>
+<div class="wantedBy">
+  <span></span>
+  <h3>Most Wanted By FBI</h3>
+</div>
+
+<div class="wantedByIndia">
+  {% for criminal in wantedByFBI %}
+
+  <div class="item text-center">
+
+    <a href="viewCriminal/{{criminal.crim_id}}">
+      <div class="wantedImg">
+        <img src="/media/{{criminal.image}}" alt="{{criminal.name}}" class="image-responsive">
+      </div>
+      <h5>{{criminal.name}}</h5>
+    </a>
+  </div>
+
+  {% endfor %}
+
+
+</div>
+{% endblock body %}

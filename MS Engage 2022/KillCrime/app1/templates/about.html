@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+
+{% block css %}
+<style>
+    .about {
+        background-color: #202020;
+        text-align: center;
+    }
+
+    .aboutUs {
+        width: 60%;
+        margin: auto;
+        background-color: #202020;
+        margin-top: 80px;
+        margin-bottom: 90px;
+        padding: 70px 120px;
+    }
+    .aboutUs h3{
+        color: #ffc107;
+    }
+</style>
+{% endblock css %}
+
+{% block body %}
+{%load static %}
+<h1 class="about">About Us</h1>
+<div class="container">
+    <div class="aboutUs">
+        <img src='{%static "app1/images/logo2.png" %}' style="margin-left: 32%;" alt="KillCrime">
+        <h3>KillCrime</h3>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error architecto laborum odit vero eum a animi
+            delectus laudantium, quos repellat, dolores aut neque dolorum, nam nihil! Earum suscipit commodi nam.
+        </p>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error architecto laborum odit vero eum a animi
+            delectus laudantium, quos repellat, dolores aut neque dolorum, nam nihil! Earum suscipit commodi nam.
+        </p>
+        <h3>
+            Contact Us
+        </h3>
+        <p>Email: nirupma@killcrime.com</p>
+        <p>Phone no.: 7307456957</p>
+        <p>Address: Indian Institute of Technology Guwahati Guwahati 781039 Assam, India</p>
+    </div>
+</div>
+
+{% endblock body %}
