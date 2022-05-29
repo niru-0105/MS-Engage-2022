@@ -11,6 +11,22 @@ import math
 from django.contrib import messages
 
 
+
+#  findings face_encodings of all images in database and their respective crim_id
+encodings = []
+
+def findEncodings():
+    criminals = Criminal.objects.all()
+    for criminal in criminals:
+        imagePath = f'media/{criminal.image}'
+        image = face_recognition.load_image_file(imagePath)
+        image = cv2.cvtColor(image,cv2.COLOR_BGR2RGB)
+        imageEncod = face_recognition.face_encodings(image)[0]
+        encodings.append([imageEncod,criminal.crim_id])
+
+findEncodings()         # calling findEcnodings function
+
+
 # home page
 def Home(request):
     try:
@@ -37,16 +53,11 @@ def Home(request):
             # finding face in the database which has minimum face distance 
             minFaceDis = math.inf
             minFaceDisId=-1
-            for criminal in criminals:
-                imagePath = f'media/{criminal.image}'
-                image = face_recognition.load_image_file(imagePath)
-                image = cv2.cvtColor(image,cv2.COLOR_BGR2RGB)
-                imageEncod = face_recognition.face_encodings(image)[0]
-
-                faceDis = face_recognition.face_distance([imageEncod],imgEod)
+            for encoding in encodings:
+                faceDis = face_recognition.face_distance([encoding[0]],imgEod)
                 if(faceDis<minFaceDis):
                     minFaceDis=faceDis;
-                    minFaceDisId=criminal.crim_id
+                    minFaceDisId=encoding[1]
             return redirect(f'viewCriminal/{minFaceDisId}')
 
     except:
