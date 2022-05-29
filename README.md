@@ -8,7 +8,7 @@ KillCrime is a web app that I have created in MS Engage 2022 mentorship program.
 #### Download zip folder of the code from GitHub
 
 1. Install python from here https://www.python.org/ftp/python/3.10.4/python-3.10.4-amd64.exe.
-If you already have it then enter following command in terminal to check version.
+If you already have it then enter following command in git terminal to check version.
 
 ```bash
   python -V
@@ -18,23 +18,33 @@ If you already have it then enter following command in terminal to check version
 ```bash
   pip install Django
 ```
-3. Install opencv
+3. Install cmake
+
+```bash
+  pip install cmake
+```
+4. Install dlib
+
+```bash
+  pip install dlib
+```
+5. Install opencv
 
 ```bash
   pip install opencv-python
 ```
-2. Install face_recognition
+6. Install face_recognition
 
 ```bash
   pip install face_recognition
 ```
-3. Move to do directory where you have extracted zip folder code. Move to 'MS Engage 2022/Killcrime'. You should be in same directory where 'manage.py' is.
+7. Move to do directory where you have extracted zip folder code. Move to 'MS Engage 2022/Killcrime'. You should be in same directory where 'manage.py' is.
 
-4. Make sure you are in correct directory and enter following commnad in terminal.
+8. Make sure you are in correct directory and enter following commnad in git terminal.
 ```bash
   python manage.py runserver
 ```
-5. Now open browser and enter web address as 'localhost:8000' or 'http://127.0.0.1:8000/', now use the Killcrime web app and enjoy.
+9. Now open browser and enter web address as 'localhost:8000' or 'http://127.0.0.1:8000/', now use the Killcrime web app and enjoy.
 
 
 ## Demo
