@@ -91,7 +91,7 @@ def deleteCriminal(request,crim_id):
 
 #  editing a particular criminal data
 def edit(request,crim_id):
-
+    try:
         criminal = Criminal.objects.get(crim_id=crim_id)
         if request.method =='GET':
             return render(request,'edit.html',{'criminal':criminal})
@@ -119,6 +119,8 @@ def edit(request,crim_id):
             criminal.save()
             messages.warning(request,"Edited successfully")
             return redirect(f'/viewCriminal/{criminal.crim_id}')
+        except:
+            return render(request,"error.html")
 
 
 
