@@ -16,7 +16,7 @@ If you already have it then enter following command in terminal to check version
 2. Install Django
 
 ```bash
-  pip install django
+  pip install Django
 ```
 3. Install opencv
 
