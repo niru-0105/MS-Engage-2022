@@ -44,7 +44,7 @@ If you already have it then enter following command in git terminal to check ver
 ```bash
   python manage.py runserver
 ```
-9. Now open browser and enter web address as 'localhost:8000' or 'http://127.0.0.1:8000/', now use the Killcrime web app and enjoy.
+9. Onece the server started, open browser and enter web address as 'localhost:8000' or 'http://127.0.0.1:8000/', now use the Killcrime web app and enjoy.
 
 
 ## Demo
