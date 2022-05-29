@@ -48,7 +48,7 @@ If you already have it then enter following command in git terminal to check ver
 
 
 ## Demo
-This is a demo video, you may use for reference www.youtube.com/njcdnce
+This is a demo video, you may use for reference https://www.youtube.com/watch?v=PluNOQ01fyc
 
 
 ## Examples
